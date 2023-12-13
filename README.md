@@ -1,2 +1,2 @@
 # NumberGuessingGame
-Understadning Erros in JavaScript code using developer tools
+Understadning erros in JavaScript code using developer tools
