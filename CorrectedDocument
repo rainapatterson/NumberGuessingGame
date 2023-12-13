@@ -83,7 +83,7 @@
     guessField.value = '';
     guessField.focus();
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess);
 
   function setGameOver() {
 	  guessField.disabled = true;
@@ -114,3 +114,10 @@
   }
 </script>
 </html>
+
+//ERROR 1
+//the first line of the error message is " Uncaught TypeError: guessSubmit.addEventListener is not a function numberGame.html:86:15 "
+//The first part, Uncaugth TyperError; guessSubmit.addeventListener is not a function, is telling us something about what went wrong
+//The second Part, numberGame.html:86:15, is telling us where in the code the error came from: line 86, character 15 of the file "numberGame.html"
+//The error message is telling us that the function we're calling is not recognized by the JavaScript interpreter. Often, this error message actually means we've spelled something wrong. If you are eevr unsure of teh correct spelling of something, look it up using MDN.
+//So, based off the error message and the function's name we are calling, it is safe to say we spelled the funnction incorrectly!
