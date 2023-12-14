@@ -137,3 +137,25 @@
 //Line 49 is using document.querySelector() method to get a reference to an element by selecting it with a CSS selector. Looking further up our file, we can find the paragraph in question: "<p class="lowOrHi"></p>
 //So we need a class selector here, which begins with a dot (.), but the selector being passed into the querySelector() method in line 49 has no dot. This could be the problem! Try changing lowOrHi to .lowOrHi in line 49.
 //After refreshing we can see the console.log(lowOrHi) now returns the value of the <p> element we want!
+
+//ERROR 3
+//Now if you play the game through again, you should have more success - the game should play through just fine, until you end the game, either by guessing the right number or by running out of guesses.
+//At this point, the game fails again, and the same error is spat out that we got at the beginning - "TypeError: resetButton.addeventListener is not a function" This time it is coming from line 94 - looking at liune 94, we know we just need to change the function to addEventListener instead.
+
+//ERROR 4
+//At this point, the game should be running like normal, however after playing a few times, you'll notice that the game always chooses 1 as the "random" number- that's not how we want the game to work
+//This means that there is a logic error somewhere - the game is playing and not returning erros, but it's not playing correctly.
+//Search the randomNumber variable, and the lines where the random number is first set. The instance that stores the random number is first set. The instance that stores the random number that we want to guess at the start of the game should be around line 45.
+//It'll read: let randomNumber = Math.floor(Math.random()) + 1;
+//and the one that generates the random number before each subsequent game is around line 113
+//randomNumber = Math.floor(Math.raondom()) + 1;
+//To check whether these lines are indeed the problem, let's turn to our friend console.log() again - insert the following line directly below each of the above two lines: console.log(randomNumber);
+//Save & Refresh, then play a few games - you'll see that randomNumber is equal to 1 at each point where it is logged to the console.
+//Working through the logic
+//To fix this, let's consider how the line is working. First, we invoke Math.random, which generates a random deciaml number between 0 and 1, ex: 0.5675493843
+//Next, we pass the result of invoking Math.random() through Math.floor(), which rounds the number passed to it down to the nearest whole number. We then add 1 to the result: Math.floor(Math.random()) + 1;
+//Rounding a random decimal number between 0 and 1 will always return 0, so adding 1 to it will always return 1. We need to multiply the random number by 100 before we round it down. The following would give us a random number between 0 and 99: Math.floor(Math.random() * 100);
+//Hence us wanting to add 1, to give us a random number between 1 and 100: Math.floor(Math.random() * 100) + 1;
+//Update both lines, then save & refresh
+
+//Yay! The game is working as expected & choosing random numbers!!
